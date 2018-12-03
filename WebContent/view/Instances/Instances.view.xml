@@ -1,0 +1,76 @@
+<mvc:View controllerName="WM.Myapp.controller.Instances.Instances"
+		  xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+	
+	<Page id="WMInstances" title="{i18n>workManagerInstances}"
+		showNavButton="true"
+		navButtonPress="onNavBack"
+		class="sapUiResponsiveContentPadding">
+			<content>
+			
+ <Table id="Instances"
+		class="sapUiResponsiveMargin"
+		width="auto"
+		items="{/INSTANCES}" 
+		itemPress="onItemPressed">
+  	  <headerToolbar>
+			<Toolbar>
+			<Title text="{i18n>workmanagerTitle}" />
+			<ToolbarSpacer />
+			<SearchField id="searchField" width="50%" search="onFilterInstances" enableSuggestions = "abap_true"/>
+			</Toolbar>
+		</headerToolbar>
+  	  
+  	  <columns id="MetaData">
+
+			<Column><Text text="{/FCAT/1/SCRTEXT_L}"/></Column>
+			<Column><Text text="{/FCAT/4/SCRTEXT_L}"/></Column>
+			<Column><Text text="{/FCAT/6/SCRTEXT_L}"/></Column>
+			<Column><Text text="{/FCAT/7/SCRTEXT_L}"/></Column>
+			
+		</columns>
+		<items>
+			<ColumnListItem
+				type="Navigation"
+				press="onPress">
+				<cells>
+					<Text text="{WMNGR}"/>
+								<ObjectStatus
+				class="sapUiSmallMarginBottom"
+				text="{parts: [ {path: 'WISTAT'} ],
+					   formatter: '.determineStatus'
+					  }"
+			    state="{= ${WISTAT} === '2' || ${WISTAT} === '3' ? 'Success' : 'Error' }"
+			 
+				 />  
+					
+										<Text text="{
+				path : 'WIVFR',
+				type : 'sap.ui.model.type.Date',
+				formatOptions: {
+					style : 'full',
+					source: {
+						pattern: 'dd/yyyy/MM'
+					}
+				}
+			}" />
+					<Text text="{
+				path : 'WIVTO',
+				type : 'sap.ui.model.type.Date',
+				formatOptions: {
+					style : 'full',
+					source: {
+						pattern: 'dd/yyyy/MM'
+					}
+				}
+			}" />							
+				</cells>
+			</ColumnListItem>
+		</items>
+		
+	</Table> 
+  	  
+			</content>
+	</Page>
+
+</mvc:View>
+		  

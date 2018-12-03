@@ -1,0 +1,32 @@
+<View controllerName="WM.Myapp.controller.Instances.Flex_layout.StepInstance" 
+      xmlns="sap.m" displayBlock="true" height="100%">
+	<Page id="detailDetailPage" title="DetailDetail page" backgroundDesign="Transparent">
+		<Table id="Step_Instances"
+			   class="sapUiResponsiveMargin"
+			   width="auto"
+    			items="{ path: 'Step_model>/EXECUTIONS'}"
+			        itemPress="onItemPressed"   >
+			<columns >
+				<Column><Label text="{Step_model>/FCAT/1/FCAT/11/SCRTEXT_L}" /></Column>
+				<Column><Label text="{Step_model>/FCAT/1/FCAT/9/SCRTEXT_L}" /></Column>
+			</columns>
+			<items>
+				<ColumnListItem  type="Navigation" vAlign="Middle">
+					<cells>
+					<Text text="{EXECBY}"/>
+						<ObjectStatus
+				class="sapUiSmallMarginBottom"
+				text="{parts: [ {path: 'Step_model>SESTAT'} ],
+					   formatter: '.determineStatus'
+					  }"
+			    state="{= ${Step_model>SESTAT} === '2' || ${Step_model>SESTAT} === '3' ? 'Success' : 'Error' }"
+			 
+				 />  
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Page>
+</View>
+
+

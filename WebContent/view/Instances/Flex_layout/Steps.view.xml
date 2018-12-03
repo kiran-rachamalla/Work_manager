@@ -1,0 +1,22 @@
+<View xmlns="sap.m" displayBlock="true" controllerName="WM.Myapp.controller.Instances.Flex_layout.Steps" height="100%">
+	<Page id="masterPage" showHeader="false" >
+		<Table id="Instances"
+			   class="sapUiResponsiveMargin"
+			   width="auto"
+			    items="{Step_model>/STEPS}"
+			        itemPress="onItemPressed"   >
+			<columns>
+				<Column><Label text="{i18n>Steps}" /></Column>
+			</columns>
+			<items>
+				<ColumnListItem type="Navigation" vAlign="Middle">
+					<cells>
+						<Text text="{Step_model>DESCR}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Page>
+</View>
+
+

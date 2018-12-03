@@ -1,0 +1,66 @@
+<mvc:View controllerName="WM.Myapp.controller.Home" 
+          xmlns= "sap.m" 
+          xmlns:mvc="sap.ui.core.mvc" 
+          displayBlock="true">
+  <App>
+  	<pages>
+ <Page title='{i18n>homePageTitle}'>
+  	   	  
+  	   <Table id="WorkManager"
+		class="sapUiResponsiveMargin"
+		width="auto"
+		items="{/WORK_MANAGER}" 
+		itemPress="onItemPressed">
+  	  <headerToolbar>
+			<Toolbar>
+			<Title text="{i18n>workmanagerTitle}" />
+			<ToolbarSpacer />
+			<SearchField id="searchField" width="50%" search="onFilterWorkManager" enableSuggestions = "abap_true"/>
+			</Toolbar>
+		</headerToolbar>
+  	  
+  	  <columns id="MetaData">
+
+			<Column><Text text="{/FCAT/0/SCRTEXT_L}"/></Column>
+			<Column><Text text="{/FCAT/1/SCRTEXT_L}"/></Column>
+			<Column><Text text="{/FCAT/3/SCRTEXT_L}"/></Column>
+			<Column><Text text="{/FCAT/4/SCRTEXT_L}"/></Column>
+			
+		</columns>
+		<items>
+			<ColumnListItem
+				type="Navigation"
+				press="onPress">
+				<cells>
+					<Text text="{WMNGR}"/>
+					<Text text="{DESCR}"/>
+										<Text text="{
+				path : 'VLDFR',
+				type : 'sap.ui.model.type.Date',
+				formatOptions: {
+					style : 'full',
+					source: {
+						pattern: 'dd/yyyy/MM'
+					}
+				}
+			}" />
+					<Text text="{
+				path : 'VLDTO',
+				type : 'sap.ui.model.type.Date',
+				formatOptions: {
+					style : 'full',
+					source: {
+						pattern: 'dd/yyyy/MM'
+					}
+				}
+			}" />							
+				</cells>
+			</ColumnListItem>
+		</items>
+		
+	</Table> 
+  	  
+  	  </Page> 
+  	</pages>
+  </App>
+</mvc:View>

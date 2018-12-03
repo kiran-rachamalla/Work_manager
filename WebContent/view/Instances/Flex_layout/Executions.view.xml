@@ -1,0 +1,34 @@
+<mvc:View controllerName="WM.Myapp.controller.Instances.Flex_layout.Executions" 
+	      xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+
+<Page id="WMExecutions" title="{i18n>workManagerExecutions}"
+		showNavButton="true"
+		navButtonPress="onNavBack"
+		class="sapUiResponsiveContentPadding">
+			<content>
+						<IconTabBar
+				id="iconTabBar"
+				class="sapUiResponsiveContentPadding"
+				select="onTabSelect"
+				selectedKey="{view>/selectedTabKey}">
+				<items>
+					<IconTabFilter id="MetricsTab" text="{i18n>Metrics}" key="Metrics">
+						<!-- <mvc:XMLView viewName="WM.Myapp.view.Instances.Flex_layout.Executions.Metrics"></mvc:XMLView> -->
+					</IconTabFilter>
+					<IconTabFilter id="MessagesTab" text="{i18n>Messages}" key="Messages">
+						<mvc:XMLView viewName="WM.Myapp.view.Instances.Flex_layout.Executions.Messages"></mvc:XMLView>
+					</IconTabFilter>
+					<IconTabFilter id="SourceTab" text="{i18n>Source}" key="Source">
+						<mvc:XMLView viewName="WM.Myapp.view.Instances.Flex_layout.Executions.Source"></mvc:XMLView>
+					</IconTabFilter>
+					<IconTabFilter id="ResultTab" text="{i18n>Result}" key="Result">
+						<mvc:XMLView viewName="WM.Myapp.view.Instances.Flex_layout.Executions.Result"></mvc:XMLView>
+					</IconTabFilter>
+					<IconTabFilter id="ErrorTab" text="{i18n>Error}" key="Error">
+						<mvc:XMLView viewName="WM.Myapp.view.Instances.Flex_layout.Executions.Error"></mvc:XMLView>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+			</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,38 @@
+<View xmlns="sap.m" displayBlock="true" 
+	  controllerName="WM.Myapp.controller.Instances.Flex_layout.StepInstances" height="100%">
+	<Page id="detailPage" showHeader="false">
+		<Table id="Step_Instances"
+			   class="sapUiResponsiveMargin"
+			   width="auto"
+    			items="{ path: 'Step_model>/STEP_INSTANCES'}"
+			        itemPress="onItemPressed"   >
+			<columns >
+				<Column><Label text="{Step_model>/FCAT/0/FCAT/3/SCRTEXT_L}" /></Column>
+				<Column><Label text="{Step_model>/FCAT/0/FCAT/4/SCRTEXT_L}" /></Column>
+				<Column><Label text="{Step_model>/FCAT/0/FCAT/9/SCRTEXT_L}" /></Column>
+			</columns>
+			<items>
+				<ColumnListItem  type="Navigation" vAlign="Middle">
+					<cells>
+						<Text text="{ path : 'Step_model>SIVFR',
+									 type : 'sap.ui.model.type.Date',
+									 formatOptions: { style : 'full', source: { pattern: 'dd/yyyy/MM' } } }" />			
+						<Text text="{ path : 'Step_model>SIVTO',
+									 type : 'sap.ui.model.type.Date',
+									 formatOptions: { style : 'full', source: { pattern: 'dd/yyyy/MM' } } }" />		
+						<ObjectStatus
+				class="sapUiSmallMarginBottom"
+				text="{parts: [ {path: 'Step_model>SESTAT'} ],
+					   formatter: '.determineStatus'
+					  }"
+			    state="{= ${Step_model>SESTAT} === '2' || ${Step_model>SESTAT} === '3' ? 'Success' : 'Error' }"
+			 
+				 />  
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Page>
+</View>
+
+

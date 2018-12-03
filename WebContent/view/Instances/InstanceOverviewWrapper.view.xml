@@ -1,0 +1,12 @@
+<mvc:View controllerName="WM.Myapp.controller.Instances.InstanceOverviewWrapper"
+		  xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout">
+
+	<Page id="wmInstanceOverviewParent" title="{i18n>InstanceDetails}"
+		showNavButton="true"
+		navButtonPress="onNavBack"
+		class="sapUiResponsiveContentPadding">
+		<content>
+			<mvc:XMLView viewName="WM.Myapp.view.Instances.InstanceOverview"/>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,21 @@
+<mvc contollerName="WM.Myapp.controller.Instances.Flex_layout.Executions.Metrics" 
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+	
+	<Table id="Step_Metrics"
+			   class="sapUiResponsiveMargin"
+			   width="auto"
+    			items="{ path: 'Executions>/METRICS'}">
+			<columns >
+				<Column><Label text="{i18n>Metric}" /></Column>
+				<Column><Label text="{i18n>contr}" /></Column>
+			</columns>
+			<items>
+				<ColumnListItem >
+					<cells>
+					<Text text="{Executions>METID_DESCR}"/>
+					<Text text="{Executions>DCOUNT}"/>	
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>	
+</mvc>

@@ -1,0 +1,124 @@
+{
+  "_version": "1.8.0",
+  "sap.app": {
+  		"id": "WM.Myapp",
+  		"type":"application",
+  		"i18n":"i18n/i18n.properties",
+  		"title":"{{appTitle}}",
+  		"description":"{{appDescription}}",
+  		"applicationversion":{
+  			"version": "1.0.0"
+  		  }
+       },
+    "sap.ui":{
+      "technology": "UI5",
+	"deviceTypes": {
+		"desktop": true,
+		"tablet": true,
+		"phone": true		
+	     }
+       },
+     "sap.ui5":{
+       "rootView":{
+       			"viewName":"WM.Myapp.view.App",
+       			"type": "XML",
+       			"async": true,
+       			"id": "app"
+       },
+       "dependencies": {
+          "minUI5Version": "1.30",
+          "libs":{
+          	"sap.m": {}
+          }
+        },
+        "routing": {
+        	         "config": {
+            "routerClass": "sap.m.routing.Router",
+            "viewType": "XML",
+            "viewPath": "WM.Myapp.view",
+            "controlId": "app",
+            "controlAggregation": "pages",
+            "transition": "flip",
+            "bypassed": {
+               "target": "notFound"
+            },
+            "async": true
+         },
+          "routes": [{
+            "pattern": "",
+            "name": "appHome",
+            "target": "home"
+         },
+         {
+				"pattern": "wmInstances:?query:",
+				"name": "WMInstances",
+				"target": "Instances"
+			},
+			{
+				"pattern":"wmInstances/overview:?query:",
+				"name":"wmInstancesOverview",
+				"target": "wmInstancesTop"
+			},
+			{
+				"pattern":"wmInstanceExecution:?query:",
+				"name":"wmInstanceExecution",
+				"target": "wmExecutionDetails"				
+			}],
+         "targets": {
+            "home": {
+               "viewId": "home",
+               "viewName": "Home",
+               "viewLevel" : 1
+            },
+            "notFound": {
+               "viewId": "notFound",
+               "viewName": "NotFound",
+               "transition": "show"
+            },
+				"Instances": {
+					"viewId": "Instances",
+					"viewPath": "WM.Myapp.view.Instances",
+					"viewName": "Instances",
+					"viewLevel" : 2
+				},
+				"wmInstancesTop":{
+					
+					"viewId": "wmInstancesTop",
+					"viewPath": "WM.Myapp.view.Instances",
+					"viewName": "InstanceOverviewWrapper"
+				},
+				"wmExecutionDetails":{
+					"viewId": "ExecutionDetails",
+					"viewPath": "WM.Myapp.view.Instances.Flex_layout",
+					"viewName": "Executions",
+					"viewLevel" : 3
+				},
+				"MetricsTab": {
+					"viewId": "MetricsTabDET",
+					"parent": "wmExecutionDetails",
+					"viewPath": "WM.Myapp.view.Instances.Flex_layout.Executions",
+					"viewName": "Metrics",
+					"controlId": "MetricsTab",
+					"controlAggregation": "content"
+				}
+         }
+        },
+        "models":{
+           "i18n":{
+             "type":"sap.ui.model.resource.ResourceModel",
+              "settings":{
+                 "bundleName":"WM.Myapp.i18n.i18n" 
+              }
+           },
+                         "invoice": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "Invoices.json"
+			}
+        },
+		  "resources":{
+		  	"css": [ { "uri":"css/style.css"}
+		  	]
+		     }
+     }
+   
+}
