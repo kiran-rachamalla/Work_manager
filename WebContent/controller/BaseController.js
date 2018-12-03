@@ -76,7 +76,5 @@ sap.ui.define([
 						this.getRouter().navTo("appHome", {}, true /*no history*/);
 					}
 				}
-				
-			
 		});
 });
