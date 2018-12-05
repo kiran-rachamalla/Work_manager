@@ -44,12 +44,12 @@ sap.ui.define([
 				
 				if (oQuery && _aValidTabKeys.indexOf(oQuery.TABKEY) > -1){
 			    	this.getModel(lv_url,(data)=>{
-						this.getView().setModel(data , "Executions");
 						if (update_dictonaries === 'X') {
 							if (this.getView().getModel("Executions").getData()["DICTONARY"]){
-							this.setDictonaries(this.getView().getModel("Executions").getData()["DICTONARY"]);
+							this.setDictonaries(data.getData()["DICTONARY"]);
 							}
 						}
+						this.getView().setModel(data , "Executions");
 			    	});
 					oView.getModel("view").setProperty("/selectedTabKey", oQuery.TABKEY);
 						this.getRouter().getTargets().display(oQuery.TABKEY + "Tab" );

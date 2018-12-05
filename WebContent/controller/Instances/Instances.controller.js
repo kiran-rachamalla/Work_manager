@@ -1,5 +1,5 @@
 sap.ui.define([
-	"WM/Myapp/controller/BaseController"
+	"WM/Myapp/controller/BaseController",
 ],function(BaseController){
 	"use strict"
 	
@@ -21,15 +21,11 @@ sap.ui.define([
 	    		lv_url = lv_url+abc +`=`+ oArgs["?query"][abc]+`&`;
 	    	}
 	    	this.getModel(lv_url,(data)=>{
-				this.getView().setModel(data);		
-				this.setDictonaries(this.getView().getModel().getData()["DICTONARY"]);
+	    		this.setDictonaries(data.getData()["DICTONARY"]);
+				this.getView().setModel(data);	
+//				this.setDictonaries(this.getView().getModel().getData()["DICTONARY"]);
 			});		
 	    	
-		},
-		determineStatus: function(instance_status){
-			let X = this.getView().getModel().getData()["DICTONARY"];
-			let Y = X[X.findIndex( x => x.FIELD == "WISTAT" )]["VALUES"].findIndex( x => x.TEXT == instance_status );
-			return X[X.findIndex( x => x.FIELD == "WISTAT" )]["VALUES"][Y].VALUE;
 		},
 		
 		onItemPressed: function(oEvent){

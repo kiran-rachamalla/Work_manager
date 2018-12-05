@@ -33,19 +33,7 @@ sap.ui.define([
 			this.bus.publish("flexible1", "setDetailPage1",{ WRKID : oCtx.getProperty("WRKID"),
 															 STEPN : oCtx.getProperty("STEPN"),
 															 CONTR : oCtx.getProperty("CONTR"),
-															 JOBNR : oCtx.getProperty("JOBNR") });
-			
-//			this.getRouter().navTo("wmInstanceExecution",{
-//				query : {
-////					WMNGR : oCtx.getProperty("WMNGR"),
-//					WRKID : oCtx.getProperty("WRKID"),
-//					STEPN : oCtx.getProperty("STEPN"),
-//					CONTR : oCtx.getProperty("CONTR"),
-//					JOBNR : oCtx.getProperty("JOBNR")
-//				}
-//			});
-			
-			
+															 JOBNR : oCtx.getProperty("JOBNR") });			
 		},
 		setDetailDetailPage: function ( sChannel,sEvent,oData) {
 			let oList = this.byId("Step_Instances");
@@ -54,11 +42,6 @@ sap.ui.define([
 	        var sOperator = 'EQ';
 			oBinding.filter([new sap.ui.model.Filter( sPath, sOperator, oData[sPath])]);
 		},		
-		determineStatus: function(instance_status){
-			let X = this.getDictonaries();
-			let Y = X[X.findIndex( x => x.FIELD == "WISTAT" )]["VALUES"].findIndex( x => x.TEXT == instance_status );
-			return X[X.findIndex( x => x.FIELD == "WISTAT" )]["VALUES"][Y].VALUE;
-		},
 		onExit: function () {
 			this.bus.unsubscribe("flexible", "setDetailDetailPage", this.setDetailDetailPage, this);
 		}

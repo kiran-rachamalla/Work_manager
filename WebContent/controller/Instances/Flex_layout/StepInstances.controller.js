@@ -39,11 +39,6 @@ sap.ui.define([
 	        var sOperator = 'EQ';
 			oBinding.filter([new sap.ui.model.Filter( sPath, sOperator, oData[sPath])]);
 		},
-		determineStatus: function(instance_status){
-			let X = this.getDictonaries();
-			let Y = X[X.findIndex( x => x.FIELD == "WISTAT" )]["VALUES"].findIndex( x => x.TEXT == instance_status );
-			return X[X.findIndex( x => x.FIELD == "WISTAT" )]["VALUES"][Y].VALUE;
-		},
 		onExit: function () {
 			this.bus.unsubscribe("flexible", "setDetailPage", this.setDetailPage, this);
 		}

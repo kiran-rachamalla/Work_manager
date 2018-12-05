@@ -1,12 +1,14 @@
 sap.ui.define([ 
 	"WM/Myapp/controller/BaseController",
 	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator"	
+	"sap/ui/model/FilterOperator"
 ], function(BaseController,Filter,FilterOperator) {
 	"use strict";
 
 	return BaseController.extend("WM.Myapp.Controller", {
 		onInit : function() {
+			
+			
 			
 			this.getModel("http://contour.vistex.local:8000/z10102_testk?sap-client=040/",(data)=>{
 				this.getView().setModel(data);
